@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>LawnCare - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'new/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'new/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'new/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'new/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'new/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'new/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'new/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'new/css/style.css' %}">
+  </head>
+  <body>
+
+    <div class="container pt-5 pb-4">
+			<div class="row justify-content-between">
+				<div class="col-md-8 order-md-last">
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<a class="navbar-brand" href="{% static 'new/index.html' %}">INDOOR<span>PLANTS</span></a>
+						</div>
+						<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+							<form action="#" class="searchform order-lg-last">
+			          <div class="form-group d-flex">
+			            <input type="text" class="form-control pl-3" placeholder="Search">
+			            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+			          </div>
+			        </form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex">
+					<div class="social-media">
+		    		<p class="mb-0 d-flex">
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+		    		</p>
+	        </div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+	        	<li class="nav-item active"><a href="{% url 'homepage2' %}" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="{% url 'aboutpage' %}" class="nav-link">About us</a></li>
+
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">categories</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+				  {% for d in data %}
+              	<a class="dropdown-item" href="{% url 'productpage' catname=d.Name %}">{{d.Name}}</a>
+				  {% endfor %}
+			  </div>
+			 </li>
+	        	<li class="nav-item"><a href="{% static 'new/gallery.html' %}" class="nav-link">Gallery</a></li>
+	        	<li class="nav-item"><a href="{% static 'new/blog.html' %}" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="{% static 'new/contact.html' %}" class="nav-link">Contact</a></li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap js-fullheight" style="background-image: url(https://images.pexels.com/photos/4503737/pexels-photo-4503737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+          	<h2 class="subheading">Express true emotions with a gift that grows forever</h2>
+          	<h1>Lawn care for everyone </h1>
+            <p class="mb-4">Welocome to the world of Indoor Plants</p>
+            <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+<div>
+                </div>
+ <div class="container py-4 my-4 mx-auto d-flex flex-column">
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+                 <form method="post" action="{% url 'savecart' %}" enctype="multipart/form-data">
+					  {% csrf_token %}
+<button type="button" style="font-size:25px" id="name"  value="{{products.Name}}" class="btn btn-primary">{{products.Name}}</button>            </div>
+            <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p class="text-right para">Based on 250 Review</p>
+        </div>
+    </div>
+    <div class="container-body mt-4">
+        <div class="row r3">
+            <div class="col-md-5  klo">
+                <ul>
+
+
+                    <li><h5 class="card-title" class="btn btn-primary">{{products.Category}}</h5>
+                        							<input type="hidden" name="productnamee" value="{{product.Name}}">
+
+</li>
+                    <li><p style="color:black; fontsize:30px;">Price =
+                            <input type="text" style="bold;" class="btn" id="price" name="productprice" value="{{products.Price}}" rs></p>
+                    <li><p style="color:black; fontsize:30px;">Select the quantity=<input type="number" min="1"  max="100" id="qty" name="productqut" value="{{products.price}}"></p><br>
+</li>
+                    <li>                        <p style="color:black;">Total price=
+					<input type="text" id="tp" name="totalprice" width="10px"></p><br>
+</li>
+                    <li>        <h5 class="card-title" class="btn btn-primary">{{products.Colour}}</h5>
+</li>
+                    <li>        <h5 class="card-title" class="btn btn-primary">{{products.Description}}</h5>
+</li>
+                </ul>
+            </div>
+            <div class="col-md-7"> <img src="{{products.Image.url}}" width="60%" height="75%"> </div>
+        </div>
+    </div>
+    <div class="footer d-flex flex-column mt-5">
+        <div class="row r4">
+
+            <div class="col-md-2 myt "><a href="{% url 'cartpage' %}"></a><button type="submit" class="btn btn-outline-danger">ADD TO CART</a></button></div>
+        </div>
+    </div>
+</div>
+
+        <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">MORE PRODUCTS</span>
+            <h2></h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+			{% for d in data %}
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="{% static 'new/blog-single.html' %}" class="block-20">
+				  <img class="img-fluid" src="{{d.Image.url}}" >
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="topper d-flex align-items-center">
+
+              	</div>
+				  <p><a href="#" class="btn btn-primary">{{d.Name}}</a></p>
+              	<h3 class="heading mb-0"><a href="#">{{d.Description}}</a></h3>
+
+
+              </div>
+            </div>
+
+          </div>
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'new/blog-single.html' %}" class="block-20" style="background-image: url({% static 'new/images/image_2.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text p-4 float-right d-block">-->
+<!--              	<div class="topper d-flex align-items-center">-->
+<!--              		<div class="one py-2 pl-3 pr-1 align-self-stretch">-->
+<!--              			<span class="day">24</span>-->
+<!--              		</div>-->
+<!--              		<div class="two pl-0 pr-3 py-2 align-self-stretch">-->
+<!--              			<span class="yr">2020</span>-->
+<!--              			<span class="mos">January</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--              	<h3 class="heading mb-0"><a href="#">All you want to know about industrial laws</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--                <p><a href="#" class="btn btn-primary">Read more</a></p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'new/blog-single.html' %}" class="block-20" style="background-image: url({% static 'new/images/image_3.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text p-4 float-right d-block">-->
+<!--              	<div class="topper d-flex align-items-center">-->
+<!--              		<div class="one py-2 pl-3 pr-1 align-self-stretch">-->
+<!--              			<span class="day">24</span>-->
+<!--              		</div>-->
+<!--              		<div class="two pl-0 pr-3 py-2 align-self-stretch">-->
+<!--              			<span class="yr">2020</span>-->
+<!--              			<span class="mos">January</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--              	<h3 class="heading mb-0"><a href="#">All you want to know about industrial laws</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--                <p><a href="#" class="btn btn-primary">Read more</a></p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+			{% endfor %}
+    </section>
+
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="logo"><a href="#">Lawn <span>Care</span></a></h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Services</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Garden Care</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Lawn mowing</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Lawn Care</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Gutter Cleaning</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>New Lawn Installation</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Contact information</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Business Hours</h2>
+              <div class="opening-hours">
+              	<h4>Opening Days:</h4>
+              	<p class="pl-3">
+              		<span>Monday – Friday : 9am to 20 pm</span>
+              		<span>Saturday : 9am to 17 pm</span>
+              	</p>
+              	<h4>Vacations:</h4>
+              	<p class="pl-3">
+              		<span>All Sunday Days</span>
+              		<span>All Official Holidays</span>
+              	</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'new/js/jquery.min.js' %}"></script>
+  <script src="{% static 'new/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'new/js/popper.min.js' %}"></script>
+  <script src="{% static 'new/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'new/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'new/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'new/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'new/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'new/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'new/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'new/js/google-map.js' %}"></script>
+  <script src="{% static 'new/js/main.js' %}"></script>
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+        {% for i in messages %}
+            {% if i.tags == 'warning' %}
+                <script>
+                    swal('{{i}}','','warning' );
+                </script>
+            {% elif i.tags == 'error' %}
+                <script>
+                    swal('{{i}}','','error' );
+                </script>
+            {% else %}
+                <script>
+                    swal('{{i}}','','success' );
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+         <script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+
+		        // If is not undefined
+
+		            $('#quantity').val(quantity + 1);
+
+
+		            // Increment
+
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+
+		        // If is not undefined
+
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+
+		});
+	</script>
+  <script type="text/javascript">
+	  $(document).ready(function(){
+	  $("#qty").change(function(){
+	  qty=document.getElementById("qty").value;
+	  price=document.getElementById("price").value;
+	  tp=qty * price ;
+	  document.getElementById("tp").value=tp;
+
+	  });
+	  });
+
+
+
+  </script>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js">   </script>
+
+
+
+  </body>
+</html>
